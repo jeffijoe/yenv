@@ -32,6 +32,6 @@
     "sinon-chai": "^2.8.0"
   },
   "dependencies": {
-    "yaml": "^0.3.0"
+    "js-yaml": "^3.5.3"
   }
 }

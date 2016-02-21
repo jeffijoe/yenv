@@ -1,3 +1,4 @@
+'use strict';
 const yenv = require('../../lib/yenv');
 const path = require('path');
 
@@ -10,6 +11,23 @@ describe('yenv', function() {
       env.string.should.equal('hello dev');
       env.int.should.equal(123);
       env.bool.should.be.true;
+    });
+
+    it('returns the contents of the YAML-file for production mode', function() {
+      const env = yenv(fixture('simple.yaml'), { env: 'production' });
+      env.string.should.equal('hello prod');
+      env.int.should.equal(456);
+      env.bool.should.be.false;
+    });
+
+    it('should let envObject values take over', function() {
+      const envObject = {
+        string: 'i win'
+      };
+      const env = yenv(fixture('simple.yaml'), { env: 'production', envObject });
+      env.string.should.equal(envObject.string);
+      env.int.should.equal(456);
+      env.bool.should.be.false;
     });
   });
 });
