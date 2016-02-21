@@ -52,7 +52,7 @@ console.log(env.DROP_DATABASE);
 
 When a variable is defined in the environment, it will take precedence over
 whatever was defined in the yaml-file.
-This means that if your hosting provider (Heroku, Azure) sets the
+This means that if your hosting provider (Heroku, Azure, whatever...) sets the
 `PORT` variable, then that's the variable that will be used.
 
 # Author
