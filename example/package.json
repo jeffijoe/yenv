@@ -1,0 +1,14 @@
+{
+  "name": "example",
+  "version": "0.0.1",
+  "description": "Example of usage",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Jeff Hansen",
+  "license": "MIT",
+  "dependencies": {
+    "yenv": "../"
+  }
+}
