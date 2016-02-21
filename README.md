@@ -2,6 +2,7 @@
 
 [![npm version](https://badge.fury.io/js/yenv.svg)](https://badge.fury.io/js/yenv)
 [![Dependency Status](https://david-dm.org/jeffijoe/yenv.svg)](https://david-dm.org/jeffijoe/yenv)
+[![Build Status](https://travis-ci.org/jeffijoe/yenv.svg?branch=master)](https://travis-ci.org/jeffijoe/yenv)
 
 Manage environment stuff with YAML.
 
