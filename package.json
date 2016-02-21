@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "description": "Environment management using YAML.",
   "main": "lib/yenv.js",
+  "engines": {
+    "node": ">=4.0.0"
+  },
   "scripts": {
     "test": "mocha test/**/*.js --require test/index.js",
     "lint-watch": "esw -w lib/ test/",
