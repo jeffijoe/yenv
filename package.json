@@ -1,0 +1,37 @@
+{
+  "name": "yenv",
+  "version": "0.0.1",
+  "description": "Environment management using YAML.",
+  "main": "lib/yenv.js",
+  "scripts": {
+    "test": "mocha test/**/*.js --require test/index.js",
+    "lint-watch": "esw -w lib/ test/",
+    "lint": "esw lib/ test/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeffijoe/yenv.git"
+  },
+  "keywords": [
+    "env",
+    "environment",
+    "yaml"
+  ],
+  "author": "Jeff Hansen <jeff@jeffijoe.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jeffijoe/yenv/issues"
+  },
+  "homepage": "https://github.com/jeffijoe/yenv#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "eslint": "^2.2.0",
+    "eslint-watch": "^2.1.7",
+    "mocha": "^2.4.5",
+    "sinon": "^1.17.3",
+    "sinon-chai": "^2.8.0"
+  },
+  "dependencies": {
+    "yaml": "^0.3.0"
+  }
+}

@@ -1,0 +1,11 @@
+# Development
+development:
+  string: 'hello dev'
+  int: 123
+  bool: true
+
+# Production
+production:
+  string: 'hello prod'
+  int: 456
+  bool: false
