@@ -8,8 +8,9 @@
   },
   "scripts": {
     "test": "mocha test/**/*.js --require test/index.js",
-    "lint-watch": "esw -w lib/ test/",
-    "lint": "esw lib/ test/"
+    "test-watch": "npm run test -- --watch",
+    "lint": "esw lib/ test/",
+    "lint-watch": "npm run lint -- --watch"
   },
   "repository": {
     "type": "git",

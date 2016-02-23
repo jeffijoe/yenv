@@ -6,4 +6,3 @@ chai.use(sinonChai);
 chai.should();
 
 global.expect = chai.expect;
-global.AssertionError = chai.AssertionError;
