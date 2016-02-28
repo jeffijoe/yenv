@@ -1,0 +1,9 @@
+section1:
+  name: 'section 1'
+  s1Only: true
+section2:
+  name: 'section 2'
+  s2Only: true
+
+main:
+  compose: [section1, section2]

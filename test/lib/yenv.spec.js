@@ -47,4 +47,48 @@ describe('yenv', function() {
       env.should.deep.equal(process.env);
     });
   });
+
+  describe('composition.yaml', function() {
+    it('development composes base and auth', function() {
+      const env = yenv(fixture('composition.yaml'), { env: 'development', envObject: { } });
+      env.should.deep.equal({
+        PORT: 1338,
+        FB_APP_ID: 123,
+        DEV: true,
+        DEV_ONLY_OPTION: 123,
+        SEED_DATABASE: true
+      });
+    });
+  });
+
+  describe('composition-order.yaml', function() {
+    it('should set name to section2 because it was last in the array', function() {
+      const env = yenv(fixture('composition-order.yaml'), { env: 'main', envObject: { } });
+      env.should.deep.equal({
+        name: 'section 2',
+        s1Only: true,
+        s2Only: true
+      });
+    });
+  });
+
+  describe('composition-circular', function() {
+    it('does not break on circular composition', function() {
+      expect(
+        () => yenv(fixture('composition-circular.yaml'), { env: 'main', envObject: { } })
+      ).to.throw('Circular sections! Path: main -> section1 -> section2 -> [section1]');
+    });
+  });
+
+  describe('composition-array-and-string.yaml', function() {
+    it('supports arrays and a single string', function() {
+      const env = yenv(fixture('composition-array-and-string.yaml'), { env: 'main', envObject: { } });
+      env.should.deep.equal({
+        s1: true,
+        s2: true,
+        name: 'section 2',
+        main: true
+      });
+    });
+  });
 });

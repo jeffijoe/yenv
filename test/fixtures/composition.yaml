@@ -1,0 +1,25 @@
+# Use case 1: base configs
+base:
+  PORT: 1338
+  SEED_DATABASE: true
+
+# Use case 2: separating config sections, then composing them later.
+auth:
+  # testing that nonexistent sections don't screw up.
+  compose: nonexistent
+  FB_APP_ID: 123
+
+# Any section can compose, and be composed.
+development:
+  # "compose" takes an array of strings that map to sections
+  compose: [base, auth]
+  DEV: true
+  DEV_ONLY_OPTION: 123
+
+production:
+  # compose can be a string or an array of strings
+  compose: development
+  # Override here..
+  PORT: 80
+  SEED_DATABASE: false
+  DEV: false

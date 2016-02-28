@@ -1,0 +1,12 @@
+section1:
+  name: 'section 1'
+  s1: true
+
+section2:
+  compose: section1
+  name: 'section 2'
+  s2: true
+
+main:
+  compose: [section1, section2]
+  main: true
