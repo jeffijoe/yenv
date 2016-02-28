@@ -5,6 +5,16 @@ const path = require('path');
 const fixture = file => path.join(__dirname, '../fixtures', file);
 
 describe('yenv', function() {
+  describe('defaults', function() {
+    it('falls back to env.yaml for filenames', function() {
+      yenv();
+    });
+
+    it('falls back to development when NODE_ENV is empty.', function() {
+      yenv(fixture('simple.yaml'), { envObject: {} }).string.should.equal('hello dev');
+    });
+  });
+
   describe('simple.yaml', function() {
     it('returns the contents of the YAML-file for development mode', function() {
       const env = yenv(fixture('simple.yaml'));
@@ -28,6 +38,13 @@ describe('yenv', function() {
       env.string.should.equal(envObject.string);
       env.int.should.equal(456);
       env.bool.should.be.false;
+    });
+  });
+
+  describe('empty.yaml', function() {
+    it('returns whatever is in the process.env', function() {
+      const env = yenv(fixture('empty.yaml'));
+      env.should.deep.equal(process.env);
     });
   });
 });
