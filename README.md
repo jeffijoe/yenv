@@ -7,7 +7,7 @@
 
 Manage environment stuff with YAML.
 
-## Installation
+# Installation
 
 ```
 npm install --save yenv
@@ -15,7 +15,7 @@ npm install --save yenv
 
 *Requires node v4.x or above.*
 
-## Usage
+# Usage
 
 Declaring variables in a file (eg. `env.yaml`):
 
@@ -48,6 +48,33 @@ const env = yenv('env.yaml', { env: 'production' });
 
 console.log(env.PORT);
 console.log(env.DROP_DATABASE);
+```
+
+## Composition
+
+`yenv` supports composing sections together. This is best illustrated with a code example.
+
+```yaml
+# Some base config..
+base:
+  SOME_URL: 'http://google.com'
+
+# Another section, related to the web config..
+web:
+  PORT: 1338
+
+# Development config uses base config
+development:
+  # We can compose more than one at a time.
+  compose: [base, web]
+  # Declare additional settings..
+  DEV_MODE: true
+
+# Production config composes and overrides other sections
+production:
+  compose: development
+  PORT: 80
+  DEV_MODE: false
 ```
 
 ## Environment variables
