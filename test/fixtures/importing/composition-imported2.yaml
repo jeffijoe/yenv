@@ -1,0 +1,5 @@
+common:
+  HEHE: '2'
+database:
+  DB_PORT: 1234
+  DB_USER: local

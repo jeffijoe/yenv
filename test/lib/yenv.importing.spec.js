@@ -10,11 +10,11 @@ describe('yenv', function() {
     it('imports and merges the files', function() {
       const actual = yenv(fixture('importing.yaml'), { env: 'development', envObject: {} });
 
-      expect(actual.I_WIN).to.equal('importing');
-      expect(actual.IMPORTED1).to.equal('imported1');
-      expect(actual.IMPORTED2).to.equal('imported2');
-      expect(actual.OVERRIDE_IMPORTED1).to.equal('imported2');
-      expect(actual.IMPORTED_FROM_1).to.equal('imported-from-1');
+      actual.I_WIN.should.equal('importing');
+      actual.IMPORTED1.should.equal('imported1');
+      actual.IMPORTED2.should.equal('imported2');
+      actual.OVERRIDE_IMPORTED1.should.equal('imported2');
+      actual.IMPORTED_FROM_1.should.equal('imported-from-1');
     });
 
     it('prevents circular imports', function() {
@@ -22,6 +22,15 @@ describe('yenv', function() {
       err.message.should.contain('Circular import');
       err.message.should.contain('circular-importer.yaml');
       err.message.should.contain('circular-imported.yaml');
+    });
+
+    it('allows composition across files', function() {
+      const actual = yenv(fixture('composition-importer.yaml'), { env: 'development', envObject: {} });
+      actual.PORT.should.equal(1337);
+      actual.DB_PORT.should.equal(7331);
+      actual.HEHE.should.equal('2');
+      actual.HOST.should.equal('example.com');
+      actual.DB_USER.should.equal('local');
     });
   });
 });

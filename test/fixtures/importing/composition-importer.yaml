@@ -1,0 +1,6 @@
+~import: [composition-imported1.yaml, composition-imported2.yaml]
+web:
+  PORT: 1337
+development:
+  ~compose: [common, web, database]
+  DB_PORT: 7331

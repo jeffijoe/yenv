@@ -1,0 +1,5 @@
+common:
+  HEHE: '1'
+web:
+  PORT: 80
+  HOST: example.com
