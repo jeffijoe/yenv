@@ -1,5 +1,4 @@
 development:
-  IMPORTED2: 'dev'
+  IMPORTED2: 'imported2'
+  OVERRIDE_IMPORTED1: 'imported2'
   I_WIN: 'imported2'
-production:
-  IMPORTED2: 'prod'

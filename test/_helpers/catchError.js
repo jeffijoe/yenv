@@ -16,4 +16,4 @@ module.exports = function catchError(fn) {
   } catch (e) {
     return e;
   }
-}
+};

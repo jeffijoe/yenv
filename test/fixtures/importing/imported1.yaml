@@ -1,5 +1,5 @@
+~import: [imported-from-1.yaml]
 development:
-  IMPORTED1: 'dev'
+  IMPORTED1: 'imported1'
+  OVERRIDE_IMPORTED1: 'imported1'
   I_WIN: 'imported1'
-production:
-  IMPORTED1: 'prod'

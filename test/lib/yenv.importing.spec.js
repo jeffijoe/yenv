@@ -11,8 +11,10 @@ describe('yenv', function() {
       const actual = yenv(fixture('importing.yaml'), { env: 'development', envObject: {} });
 
       expect(actual.I_WIN).to.equal('importing');
-      expect(actual.IMPORTED1).to.equal('dev');
-      expect(actual.IMPORTED2).to.equal('dev');
+      expect(actual.IMPORTED1).to.equal('imported1');
+      expect(actual.IMPORTED2).to.equal('imported2');
+      expect(actual.OVERRIDE_IMPORTED1).to.equal('imported2');
+      expect(actual.IMPORTED_FROM_1).to.equal('imported-from-1');
     });
 
     it('prevents circular imports', function() {
