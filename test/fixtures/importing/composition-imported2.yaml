@@ -1,5 +1,8 @@
+compose-me-plz:
+  COMPOSED: true
 common:
   HEHE: '2'
 database:
+  ~compose: compose-me-plz
   DB_PORT: 1234
   DB_USER: local

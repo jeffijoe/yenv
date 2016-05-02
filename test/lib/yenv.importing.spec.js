@@ -31,6 +31,7 @@ describe('yenv', function() {
       actual.HEHE.should.equal('2');
       actual.HOST.should.equal('example.com');
       actual.DB_USER.should.equal('local');
+      actual.COMPOSED.should.be.true;
     });
   });
 });
