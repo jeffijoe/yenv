@@ -6,4 +6,4 @@ section2:
   s2Only: true
 
 main:
-  compose: [section1, section2]
+  ~compose: [section1, section2]
