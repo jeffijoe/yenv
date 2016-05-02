@@ -50,6 +50,15 @@ console.log(env.PORT);
 console.log(env.DROP_DATABASE);
 ```
 
+## Environment variables
+
+When a variable is defined in the environment, it will take precedence over
+whatever was defined in the yaml-file.
+This means that if your hosting provider (Heroku, Azure, whatever...) sets the
+`PORT` variable, then that's the variable that will be used.
+
+_Sensitive configuration should **always** be defined in the actual environment variables and not committed to source control!_
+
 ## Composition
 
 `yenv` supports composing sections together. This is best illustrated with a code example.
@@ -77,12 +86,58 @@ production:
   DEV_MODE: false
 ```
 
-## Environment variables
+## Importing
 
-When a variable is defined in the environment, it will take precedence over
-whatever was defined in the yaml-file.
-This means that if your hosting provider (Heroku, Azure, whatever...) sets the
-`PORT` variable, then that's the variable that will be used.
+`yenv` supports importing files recursively, with the importer winning in case of duplicate variables. *Paths are resolved relative to the importing file!*
+
+*database.yaml*
+
+```yaml
+development:
+  DB_HOST: localhost
+```
+
+*web.yaml*
+
+```yaml
+development:
+  PORT: 1337
+production:
+  PORT: 80
+```
+
+*env.yaml*
+
+```yaml
+~import: [database.yaml, web.yaml]
+development:
+  PORT: 3000 # This wins over web.yaml because this is the importer.
+```
+
+```javascript
+const env = yenv();
+env.DB_HOST; // "localhost"
+env.PORT; // 3000
+```
+
+As mentioned earlier, in case of clashes *the importer always wins*. However, when it comes to 2 files being imported, the last one specified wins (but still not over the importer).
+
+**ProTip:** You can use `~compose` on sections defined in imported files. Example:
+
+*stuff.yaml*
+
+```yaml
+cool-section:
+  STUFF: 'yenv is the best'
+``
+
+*env.yaml*
+
+```yaml
+~import: stuff.yaml
+development:
+  ~compose: cool-section
+```
 
 # Changelog
 
