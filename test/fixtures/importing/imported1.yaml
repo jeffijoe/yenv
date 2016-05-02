@@ -1,0 +1,5 @@
+development:
+  IMPORTED1: 'dev'
+  I_WIN: 'imported1'
+production:
+  IMPORTED1: 'prod'

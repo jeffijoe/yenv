@@ -41,6 +41,7 @@
     "sinon-chai": "^2.8.0"
   },
   "dependencies": {
+    "deepmerge": "^0.2.10",
     "js-yaml": "^3.5.3"
   }
 }

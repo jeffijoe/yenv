@@ -1,0 +1,3 @@
+~import: [imported1.yaml, imported2.yaml]
+development:
+  I_WIN: 'importing'
