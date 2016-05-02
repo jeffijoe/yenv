@@ -129,7 +129,7 @@ As mentioned earlier, in case of clashes *the importer always wins*. However, wh
 ```yaml
 cool-section:
   STUFF: 'yenv is the best'
-``
+```
 
 *env.yaml*
 
