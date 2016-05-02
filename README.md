@@ -66,13 +66,13 @@ web:
 # Development config uses base config
 development:
   # We can compose more than one at a time.
-  compose: [base, web]
+  ~compose: [base, web]
   # Declare additional settings..
   DEV_MODE: true
 
 # Production config composes and overrides other sections
 production:
-  compose: development
+  ~compose: development
   PORT: 80
   DEV_MODE: false
 ```
@@ -83,6 +83,10 @@ When a variable is defined in the environment, it will take precedence over
 whatever was defined in the yaml-file.
 This means that if your hosting provider (Heroku, Azure, whatever...) sets the
 `PORT` variable, then that's the variable that will be used.
+
+# Changelog
+
+Please see [CHANGELOG.md](CHANGELOG.md).
 
 # Author
 
