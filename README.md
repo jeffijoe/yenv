@@ -139,6 +139,16 @@ development:
   ~compose: cool-section
 ```
 
+# TypeScript
+
+Typings are available in `lib/yenv.d.ts` and are set in `package.json`.
+
+To import `yenv` in TypeScript:
+
+```typescript
+import * as yenv from 'yenv';
+```
+
 # Changelog
 
 Please see [CHANGELOG.md](CHANGELOG.md).
