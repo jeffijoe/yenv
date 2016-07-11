@@ -1,9 +1,8 @@
 'use strict';
 const yenv = require('../../lib/yenv');
-const path = require('path');
 const catchError = require('../_helpers/catchError');
 
-const fixture = file => path.join(__dirname, '../fixtures/importing', file);
+const fixture = require('../_helpers/fixture')('importing');
 
 describe('yenv', function() {
   describe('importing', function() {

@@ -13,7 +13,7 @@
     "lint-watch": "npm run lint -- --watch",
     "cover": "istanbul cover  -x \"**example/**\" ./node_modules/mocha/bin/_mocha -- test/**/*.js --require test/index.js",
     "coveralls": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- test/**/*.js --require test/index.js && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
-    "prepublish": "npm run test && npm run lint"
+    "do-publish": "npm run test && npm run lint && npm publish"
   },
   "repository": {
     "type": "git",
@@ -32,16 +32,16 @@
   "homepage": "https://github.com/jeffijoe/yenv#readme",
   "devDependencies": {
     "chai": "^3.5.0",
-    "coveralls": "^2.11.8",
-    "eslint": "^2.2.0",
-    "eslint-watch": "^2.1.7",
-    "istanbul": "^0.4.2",
-    "mocha": "^2.4.5",
-    "sinon": "^1.17.3",
+    "coveralls": "^2.11.9",
+    "eslint": "^3.0.1",
+    "eslint-watch": "^2.1.13",
+    "istanbul": "^0.4.4",
+    "mocha": "^2.5.3",
+    "sinon": "^1.17.4",
     "sinon-chai": "^2.8.0"
   },
   "dependencies": {
-    "deepmerge": "^0.2.10",
-    "js-yaml": "^3.5.3"
+    "deep-extend": "^0.4.1",
+    "js-yaml": "^3.6.1"
   }
 }
