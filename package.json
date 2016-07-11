@@ -43,5 +43,6 @@
   "dependencies": {
     "deep-extend": "^0.4.1",
     "js-yaml": "^3.6.1"
-  }
+  },
+  "typings": "lib/yenv.d.ts"
 }
