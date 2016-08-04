@@ -1,7 +1,7 @@
 /**
  * To import in TypeScript:
  *
- * import yenv from 'yenv'
+ * import * as yenv from 'yenv'
  */
 
 declare namespace yenv {
