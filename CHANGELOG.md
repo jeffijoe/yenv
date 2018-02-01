@@ -2,7 +2,8 @@
 
 ## 2.0.0
 
-* Coerce to known type ([#12](https://github.com/jeffijoe/yenv/issues/12))
+* **[BREAKING]**:Coerce to known type ([#12](https://github.com/jeffijoe/yenv/issues/12))
+* **[BREAKING]**: `~import` no longer throws on missing files; introduced `~require` which does.
 * Add CLI tool to print the environment variables.
 
 ## 1.0.0

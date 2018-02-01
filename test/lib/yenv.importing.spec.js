@@ -37,4 +37,23 @@ describe('importing', function() {
     actual.DB_USER.should.equal('local')
     actual.COMPOSED.should.be.true
   })
+
+  it('allows for nonexisting files when using ~import', () => {
+    const actual = yenv(fixture('optional-import.yaml'), {
+      env: 'development',
+      envObject: {}
+    })
+    console.log(actual)
+    expect(actual.TEST).to.equal(true)
+  })
+
+  it('disallows nonexisting files when using ~require', () => {
+    const err = catchError(() =>
+      yenv(fixture('required-import.yaml'), {
+        env: 'development',
+        envObject: {}
+      })
+    )
+    expect(err.message).to.contain('nonexisting')
+  })
 })

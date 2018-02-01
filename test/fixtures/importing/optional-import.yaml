@@ -1,0 +1,5 @@
+~import: nonexisting.yaml
+
+# Development
+development:
+  TEST: true
