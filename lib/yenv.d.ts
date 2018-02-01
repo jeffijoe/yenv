@@ -32,8 +32,27 @@ declare namespace yenv {
      * If `true`, skips type coercion.
      */
     raw?: boolean
+    /**
+     * If `true` (default), wraps the result in `keyblade` which protects
+     * against undefined keys.
+     */
+    strict?: boolean
+    /**
+     * If `strict` is enabled, allows these keys to not exist.
+     */
+    optionalKeys?: Array<string>
+    /**
+     * If `strict` is enabled, when an unknown key is found, calls this before throwing.
+     * First parameter is the message, second is the missing key.
+     */
+    logBeforeThrow?: UnknownKeyLogger
   }
 }
+
+/**
+ * Unknown key logger callback.
+ */
+export type UnknownKeyLogger = (message: string, key: string) => any
 
 /**
  * Loads the environment settings

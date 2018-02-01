@@ -1533,6 +1533,10 @@ just-extend@^1.1.26:
   version "1.1.27"
   resolved "https://registry.yarnpkg.com/just-extend/-/just-extend-1.1.27.tgz#ec6e79410ff914e472652abfa0e603c03d60e905"
 
+keyblade@^0.3.2:
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/keyblade/-/keyblade-0.3.2.tgz#1e657f47746596807d6b591c53476bea9a1ac2d4"
+
 keypress@^0.2.1:
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/keypress/-/keypress-0.2.1.tgz#1e80454250018dbad4c3fe94497d6e67b6269c77"
