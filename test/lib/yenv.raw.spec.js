@@ -7,9 +7,11 @@ describe('raw mode', function() {
     const actual = yenv(fixture('simple.yaml'), {
       env: 'development',
       envObject: {},
-      raw: true
+      raw: true,
+      strict: false
     })
     expect(actual.int).to.equal('123')
     expect(actual.bool).to.equal('true')
+    expect(actual.null).not.to.exist
   })
 })

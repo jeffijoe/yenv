@@ -3,9 +3,11 @@ development:
   string: 'hello dev'
   int: 123
   bool: true
+  null: null
 
 # Production
 production:
   string: 'hello prod'
   int: 456
   bool: false
+  null: null
