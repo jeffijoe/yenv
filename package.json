@@ -6,6 +6,9 @@
   "engines": {
     "node": ">=6.0.0"
   },
+  "bin": {
+    "yenv": "./bin/yenv"
+  },
   "scripts": {
     "test": "mocha test/**/*.js --require test/index.js",
     "test-watch": "npm run test -- --watch",
