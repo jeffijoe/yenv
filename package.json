@@ -64,7 +64,8 @@
   "dependencies": {
     "coercer": "^1.1.2",
     "deep-extend": "^0.5.0",
-    "js-yaml": "^3.6.1"
+    "js-yaml": "^3.6.1",
+    "yargs": "^11.0.0"
   },
   "typings": "lib/yenv"
 }
