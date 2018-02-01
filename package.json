@@ -9,18 +9,19 @@
   "scripts": {
     "test": "mocha test/**/*.js --require test/index.js",
     "test-watch": "npm run test -- --watch",
-    "lint":
-      "esw --fix lib/ test/ && prettier --write '{lib,test}/**/*.{js,ts}'",
+    "lint": "esw --fix lib/ test/ && prettier --write '{lib,test}/**/*.{js,ts}'",
     "lint-watch": "npm run lint -- --watch",
-    "cover":
-      "istanbul cover  -x \"**example/**\" ./node_modules/mocha/bin/_mocha -- test/**/*.js --require test/index.js",
-    "coveralls":
-      "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- test/**/*.js --require test/index.js && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+    "cover": "istanbul cover  -x \"**example/**\" ./node_modules/mocha/bin/_mocha -- test/**/*.js --require test/index.js",
+    "coveralls": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- test/**/*.js --require test/index.js && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "do-publish": "npm run test && npm run lint && npm publish",
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "*.js": ["esw --fix", "prettier --write", "git add"]
+    "*.js": [
+      "esw --fix",
+      "prettier --write",
+      "git add"
+    ]
   },
   "prettier": {
     "semi": false,
@@ -30,7 +31,11 @@
     "type": "git",
     "url": "git+https://github.com/jeffijoe/yenv.git"
   },
-  "keywords": ["env", "environment", "yaml"],
+  "keywords": [
+    "env",
+    "environment",
+    "yaml"
+  ],
   "author": "Jeff Hansen <jeff@jeffijoe.com>",
   "license": "MIT",
   "bugs": {
@@ -57,6 +62,7 @@
     "sinon-chai": "^2.8.0"
   },
   "dependencies": {
+    "coercer": "^1.1.2",
     "deep-extend": "^0.5.0",
     "js-yaml": "^3.6.1"
   },

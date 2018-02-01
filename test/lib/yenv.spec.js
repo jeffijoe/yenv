@@ -45,7 +45,7 @@ describe('yenv', function() {
 
   describe('empty.yaml', function() {
     it('returns whatever is in the process.env', function() {
-      const env = yenv(fixture('empty.yaml'))
+      const env = yenv(fixture('empty.yaml'), { raw: true })
       env.should.deep.equal(process.env)
     })
   })

@@ -28,6 +28,10 @@ declare namespace yenv {
      * @type {IEnvironment}
      */
     envObject?: IEnvironment
+    /**
+     * If `true`, skips type coercion.
+     */
+    raw?: boolean
   }
 }
 

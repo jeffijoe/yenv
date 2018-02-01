@@ -33,7 +33,7 @@ describe('yenv', function() {
       })
       actual.PORT.should.equal(1337)
       actual.DB_PORT.should.equal(7331)
-      actual.HEHE.should.equal('2')
+      actual.HEHE.should.equal(2)
       actual.HOST.should.equal('example.com')
       actual.DB_USER.should.equal('local')
       actual.COMPOSED.should.be.true
