@@ -9,21 +9,28 @@
   "scripts": {
     "test": "mocha test/**/*.js --require test/index.js",
     "test-watch": "npm run test -- --watch",
-    "lint": "esw lib/ test/",
+    "lint":
+      "esw --fix lib/ test/ && prettier --write '{lib,test}/**/*.{js,ts}'",
     "lint-watch": "npm run lint -- --watch",
-    "cover": "istanbul cover  -x \"**example/**\" ./node_modules/mocha/bin/_mocha -- test/**/*.js --require test/index.js",
-    "coveralls": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- test/**/*.js --require test/index.js && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
-    "do-publish": "npm run test && npm run lint && npm publish"
+    "cover":
+      "istanbul cover  -x \"**example/**\" ./node_modules/mocha/bin/_mocha -- test/**/*.js --require test/index.js",
+    "coveralls":
+      "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- test/**/*.js --require test/index.js && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+    "do-publish": "npm run test && npm run lint && npm publish",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.js": ["esw --fix", "prettier --write", "git add"]
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jeffijoe/yenv.git"
   },
-  "keywords": [
-    "env",
-    "environment",
-    "yaml"
-  ],
+  "keywords": ["env", "environment", "yaml"],
   "author": "Jeff Hansen <jeff@jeffijoe.com>",
   "license": "MIT",
   "bugs": {
@@ -31,17 +38,26 @@
   },
   "homepage": "https://github.com/jeffijoe/yenv#readme",
   "devDependencies": {
-    "chai": "^3.5.0",
-    "coveralls": "^2.11.9",
-    "eslint": "^3.0.1",
-    "eslint-watch": "^2.1.13",
+    "chai": "^4.1.2",
+    "coveralls": "^3.0.0",
+    "eslint": "^4.16.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-config-standard": "^11.0.0-beta.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-node": "^5.2.1",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "eslint-watch": "^3.1.3",
+    "husky": "^0.14.3",
     "istanbul": "^0.4.4",
-    "mocha": "^2.5.3",
-    "sinon": "^1.17.4",
+    "lint-staged": "^6.1.0",
+    "mocha": "^5.0.0",
+    "prettier": "^1.10.2",
+    "sinon": "^4.2.2",
     "sinon-chai": "^2.8.0"
   },
   "dependencies": {
-    "deep-extend": "^0.4.1",
+    "deep-extend": "^0.5.0",
     "js-yaml": "^3.6.1"
   },
   "typings": "lib/yenv"

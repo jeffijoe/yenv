@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 /**
  * Catches an error and returns it.
@@ -11,9 +11,9 @@
  */
 module.exports = function catchError(fn) {
   try {
-    fn();
-    return undefined;
+    fn()
+    return undefined
   } catch (e) {
-    return e;
+    return e
   }
-};
+}

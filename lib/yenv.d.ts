@@ -8,7 +8,7 @@ declare namespace yenv {
   /**
    * The environment.
    */
-  export type IEnvironment = any;
+  export type IEnvironment = any
 
   /**
    * The yenv options
@@ -21,16 +21,15 @@ declare namespace yenv {
      *
      * @type {string}
      */
-    env?: string;
+    env?: string
     /**
      * The environment to check on. Defaults to `process.env`
      *
      * @type {IEnvironment}
      */
-    envObject?: IEnvironment;
+    envObject?: IEnvironment
   }
 }
-
 
 /**
  * Loads the environment settings
@@ -39,7 +38,12 @@ declare namespace yenv {
  * @param {yenv.IYenvOpts} [opts]
  * @returns {yenv.IEnvironment}
  */
-declare function yenv(filePath?: string, opts?: yenv.IYenvOpts): yenv.IEnvironment;
+declare function yenv(
+  filePath?: string,
+  opts?: yenv.IYenvOpts
+): yenv.IEnvironment
 
-declare namespace yenv {}
+declare namespace yenv {
+
+}
 export = yenv

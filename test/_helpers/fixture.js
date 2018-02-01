@@ -1,5 +1,5 @@
-'use strict';
-const path = require('path');
+'use strict'
+const path = require('path')
 
 /**
  * Makes a fixture function.
@@ -8,6 +8,6 @@ const path = require('path');
  * @return {Function}
  */
 module.exports = function makeFixture(folder) {
-  const fixture = file => path.join(__dirname, '../fixtures', folder, file);
-  return fixture;
-};
+  const fixture = file => path.join(__dirname, '../fixtures', folder, file)
+  return fixture
+}
