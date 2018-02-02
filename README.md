@@ -59,6 +59,20 @@ This means that if your hosting provider (Heroku, Azure, whatever...) sets the
 
 _Sensitive configuration should **always** be defined in the actual environment variables and not committed to source control!_
 
+## Type coercion
+
+`yenv` will [coerce][coercer] values to the correct types.
+
+For example, if you run your app with
+
+```sh
+PORT=80 ENABLE_EMAILS=true node app.js
+```
+
+Then `typeof env.PORT` will be `number` and `typeof env.ENABLE_EMAILS` will be `boolean`.
+
+To disable this behavior, use `yenv('env.yaml', { raw: false })`. This will make every value a `string`.
+
 ## Composition
 
 `yenv` supports composing sections together. This is best illustrated with a code example.
@@ -146,6 +160,45 @@ development:
   ~compose: cool-section
 ```
 
+# CLI
+
+`yenv` ships with a neat CLI tool. Currently it only has one command: `yenv print`.
+
+`yenv print [file] [env] [format]` lets you print your environment as JSON or a `dotenv`-like list.
+
+**Example:** printing the `development` environment in `env.yaml` as `json`, sorted alphabetically (`-s` = sort), and excluding the actual user environment (`-f` = file only):
+
+```
+$ ./node_modules/.bin/yenv print env.yaml development json -f -s
+{
+  "BOOLEAN": false,
+  "NUMBER": 1337,
+  "STRING": "hello dev world"
+}
+```
+
+**Example:** same as above, but in `raw` mode (`-r`)
+
+```
+$ ./node_modules/.bin/yenv print env.yaml development json -f -s -r
+{
+  "BOOLEAN": "false",
+  "NUMBER": "1337",
+  "STRING": "hello dev world"
+}
+```
+
+**Example:** same as above, but in `dotenv` format
+
+```
+$ ./node_modules/.bin/yenv print env.yaml development dotenv -f -s -r
+BOOLEAN="false"
+NUMBER="1337"
+STRING="hello dev world"
+```
+
+Please see `yenv print --help` for info.
+
 # TypeScript
 
 Typings are available in `lib/yenv.d.ts` and are set in `package.json`.
@@ -163,3 +216,5 @@ Please see [CHANGELOG.md](CHANGELOG.md).
 # Author
 
 Jeff Hansen - [@Jeffijoe](https://twitter.com/Jeffijoe)
+
+[coercer]: https://github.com/achingbrain/coercer
