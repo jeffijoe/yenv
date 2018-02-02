@@ -13,7 +13,7 @@ Manage environment stuff with YAML.
 npm install --save yenv
 ```
 
-*Requires node v4.x or above.*
+_Requires node v4.x or above._
 
 # Usage
 
@@ -33,21 +33,21 @@ production:
 Reading the file:
 
 ```javascript
-const yenv = require('yenv');
+const yenv = require('yenv')
 
 // Default filename is env.yaml.
-const env = yenv();
+const env = yenv()
 
 // You can call it with a filename, too.
-const env = yenv('env.yaml');
+const env = yenv('env.yaml')
 
 // The top-level element in the YAML-file is used to
 // read the correct set of variables. The value is grabbed
 // from `process.env.NODE_ENV`. To explicitly specify it, use:
-const env = yenv('env.yaml', { env: 'production' });
+const env = yenv('env.yaml', { env: 'production' })
 
-console.log(env.PORT);
-console.log(env.DROP_DATABASE);
+console.log(env.PORT)
+console.log(env.DROP_DATABASE)
 ```
 
 ## Environment variables
@@ -88,16 +88,23 @@ production:
 
 ## Importing
 
-`yenv` supports importing files recursively, with the importer winning in case of duplicate variables. *Paths are resolved relative to the importing file!*
+`yenv` supports importing files recursively, with the importer winning in case of duplicate variables. _Paths are resolved relative to the importing file!_
 
-*database.yaml*
+There are 2 ways to import:
+
+* `~require: [file1.yaml, file2.yaml]` - imports `file1.yaml` and `file2.yaml`. If a file does not exist, it throws an error.
+* `~import: [file1.yaml, file2.yaml]` - imports `file1.yaml` and `file2.yaml`. If a file does not exist, it acts as if it was empty.
+
+> **Note**: In `v1.x`, `~import` would throw an error if the file does not exist. From `v2.x` you can use `~require` for that behavior.
+
+_database.yaml_
 
 ```yaml
 development:
   DB_HOST: localhost
 ```
 
-*web.yaml*
+_web.yaml_
 
 ```yaml
 development:
@@ -106,35 +113,35 @@ production:
   PORT: 80
 ```
 
-*env.yaml*
+_env.yaml_
 
 ```yaml
-~import: [database.yaml, web.yaml]
+~require: [database.yaml, web.yaml]
 development:
   PORT: 3000 # This wins over web.yaml because this is the importer.
 ```
 
 ```javascript
-const env = yenv();
-env.DB_HOST; // "localhost"
-env.PORT; // 3000
+const env = yenv()
+env.DB_HOST // "localhost"
+env.PORT // 3000
 ```
 
-As mentioned earlier, in case of clashes *the importer always wins*. However, when it comes to 2 files being imported, the last one specified wins (but still not over the importer).
+As mentioned earlier, in case of clashes _the importer always wins_. However, when it comes to 2 files being imported, the last one specified wins (but still not over the importer).
 
 **ProTip:** You can use `~compose` on sections defined in imported files. Example:
 
-*stuff.yaml*
+_stuff.yaml_
 
 ```yaml
 cool-section:
   STUFF: 'yenv is the best'
 ```
 
-*env.yaml*
+_env.yaml_
 
 ```yaml
-~import: stuff.yaml
+~require: stuff.yaml
 development:
   ~compose: cool-section
 ```
@@ -146,7 +153,7 @@ Typings are available in `lib/yenv.d.ts` and are set in `package.json`.
 To import `yenv` in TypeScript:
 
 ```typescript
-import * as yenv from 'yenv';
+import * as yenv from 'yenv'
 ```
 
 # Changelog

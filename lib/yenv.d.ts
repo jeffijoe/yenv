@@ -6,16 +6,11 @@
 
 declare namespace yenv {
   /**
-   * The environment.
-   */
-  export type IEnvironment = any
-
-  /**
    * The yenv options
    *
    * @interface IYenvOpts
    */
-  export interface IYenvOpts {
+  export interface IYenvOpts<T> {
     /**
      * What environment should be used? Defaults to "development"
      *
@@ -25,9 +20,9 @@ declare namespace yenv {
     /**
      * The environment to check on. Defaults to `process.env`
      *
-     * @type {IEnvironment}
+     * @type {object}
      */
-    envObject?: IEnvironment
+    envObject?: object
     /**
      * If `true`, skips type coercion.
      */
@@ -40,19 +35,19 @@ declare namespace yenv {
     /**
      * If `strict` is enabled, allows these keys to not exist.
      */
-    optionalKeys?: Array<string>
+    optionalKeys?: Array<keyof T>
     /**
      * If `strict` is enabled, when an unknown key is found, calls this before throwing.
      * First parameter is the message, second is the missing key.
      */
-    logBeforeThrow?: UnknownKeyLogger
+    logBeforeThrow?: UnknownKeyLogger<keyof T>
   }
-}
 
-/**
- * Unknown key logger callback.
- */
-export type UnknownKeyLogger = (message: string, key: string) => any
+  /**
+   * Callback for logging when using unknown keys
+   */
+  export type UnknownKeyLogger<K> = (message: string, key: K) => any
+}
 
 /**
  * Loads the environment settings
@@ -61,12 +56,10 @@ export type UnknownKeyLogger = (message: string, key: string) => any
  * @param {yenv.IYenvOpts} [opts]
  * @returns {yenv.IEnvironment}
  */
-declare function yenv(
-  filePath?: string,
-  opts?: yenv.IYenvOpts
-): yenv.IEnvironment
+declare function yenv<T = any>(filePath?: string, opts?: yenv.IYenvOpts<T>): T
 
 declare namespace yenv {
 
 }
+
 export = yenv
