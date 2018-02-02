@@ -13,7 +13,7 @@ Manage environment stuff with YAML.
 npm install --save yenv
 ```
 
-_Requires node v4.x or above._
+_Requires node v6.x or above._
 
 # Usage
 
