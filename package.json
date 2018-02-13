@@ -1,6 +1,6 @@
 {
   "name": "yenv",
-  "version": "2.0.0-rc.3",
+  "version": "2.0.0-rc.4",
   "description": "Environment management using YAML.",
   "main": "lib/yenv.js",
   "engines": {
@@ -12,27 +12,24 @@
   "scripts": {
     "test": "mocha test/**/*.js --require test/index.js",
     "test-watch": "npm run test -- --watch",
-    "lint":
-      "esw --fix lib/ test/ && prettier --write '{lib,test}/**/*.{js,ts}'",
+    "lint": "esw --fix lib/ test/ && prettier --write '{lib,test}/**/*.{js,ts}'",
     "lint-watch": "npm run lint -- --watch",
-    "cover":
-      "istanbul cover  -x \"**example/**\" ./node_modules/mocha/bin/_mocha -- test/**/*.js --require test/index.js",
-    "coveralls":
-      "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- test/**/*.js --require test/index.js && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+    "cover": "istanbul cover  -x \"**example/**\" ./node_modules/mocha/bin/_mocha -- test/**/*.js --require test/index.js",
+    "coveralls": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- test/**/*.js --require test/index.js && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "publish:pre": "npm run lint && npm run cover",
     "publish:post": "npm publish && git push --follow-tags",
-    "release:prerelease":
-      "npm run publish:pre && npm version prerelease && npm run publish:post",
-    "release:patch":
-      "npm run publish:pre && npm version patch && npm run publish:post",
-    "release:minor":
-      "npm run publish:pre && npm version minor && npm run publish:post",
-    "release:major":
-      "npm run publish:pre && npm version major && npm run publish:post",
+    "release:prerelease": "npm run publish:pre && npm version prerelease && npm run publish:post",
+    "release:patch": "npm run publish:pre && npm version patch && npm run publish:post",
+    "release:minor": "npm run publish:pre && npm version minor && npm run publish:post",
+    "release:major": "npm run publish:pre && npm version major && npm run publish:post",
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "*.js": ["esw --fix", "prettier --write", "git add"]
+    "*.js": [
+      "esw --fix",
+      "prettier --write",
+      "git add"
+    ]
   },
   "prettier": {
     "semi": false,
@@ -42,7 +39,11 @@
     "type": "git",
     "url": "git+https://github.com/jeffijoe/yenv.git"
   },
-  "keywords": ["env", "environment", "yaml"],
+  "keywords": [
+    "env",
+    "environment",
+    "yaml"
+  ],
   "author": "Jeff Hansen <jeff@jeffijoe.com>",
   "license": "MIT",
   "bugs": {
