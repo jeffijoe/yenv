@@ -71,7 +71,7 @@ PORT=80 ENABLE_EMAILS=true node app.js
 
 Then `typeof env.PORT` will be `number` and `typeof env.ENABLE_EMAILS` will be `boolean`.
 
-To disable this behavior, use `yenv('env.yaml', { raw: false })`. This will make every value a `string`.
+To disable this behavior, use `yenv('env.yaml', { raw: true })`. This will make every value a `string`.
 
 ## Strict Mode
 
