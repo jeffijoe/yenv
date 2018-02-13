@@ -39,8 +39,9 @@ declare namespace yenv {
     /**
      * If `strict` is enabled, when an unknown key is found, calls this before throwing.
      * First parameter is the message, second is the missing key.
+     * If `true`, uses `console.log`.
      */
-    logBeforeThrow?: UnknownKeyLogger<keyof T>
+    logBeforeThrow?: boolean | UnknownKeyLogger<keyof T>
   }
 
   /**

@@ -73,6 +73,41 @@ Then `typeof env.PORT` will be `number` and `typeof env.ENABLE_EMAILS` will be `
 
 To disable this behavior, use `yenv('env.yaml', { raw: false })`. This will make every value a `string`.
 
+## Strict Mode
+
+As of v2, Strict Mode is enabled by default. Strict Mode will throw an error when accessing unknown keys. This is possible thanks to [Proxies][proxy]. `yenv` uses [`keyblade`][keyblade] for this.
+
+The idea is to fail fast when a key does not exist.
+
+To disable:
+
+```js
+yenv('env.yaml', { strict: false })
+```
+
+This example shows the possible ways to configure Strict Mode:
+
+```js
+// These are all default values (except `optionalKeys`).
+yenv('env.yaml', {
+  /**
+   * If `true` (default), wraps the result in `keyblade` which protects
+   * against undefined keys.
+   */
+  strict: true,
+  /**
+   * If `strict` is enabled, allows these keys to not exist.
+   */
+  optionalKeys: ['SOME_OPTIONAL_KEY', 'ANOTHER_ONE'],
+  /**
+   * If `strict` is enabled, when an unknown key is found, calls this before throwing.
+   * First parameter is the message, second is the missing key.
+   * If `true`, uses `console.log`.
+   */
+  logBeforeThrow: true // can also be a function
+})
+```
+
 ## Composition
 
 `yenv` supports composing sections together. This is best illustrated with a code example.
@@ -218,3 +253,5 @@ Please see [CHANGELOG.md](CHANGELOG.md).
 Jeff Hansen - [@Jeffijoe](https://twitter.com/Jeffijoe)
 
 [coercer]: https://github.com/achingbrain/coercer
+[keyblade]: https://github.com/jeffijoe/keyblade
+[proxy]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy
