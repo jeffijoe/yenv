@@ -57,6 +57,12 @@ whatever was defined in the yaml-file.
 This means that if your hosting provider (Heroku, Azure, whatever...) sets the
 `PORT` variable, then that's the variable that will be used.
 
+You can disable this behavior by passing an empty object in the `envObject` option.
+
+```js
+const env = yenv('env.yaml', { envObject: {} })
+```
+
 _Sensitive configuration should **always** be defined in the actual environment variables and not committed to source control!_
 
 ## Type coercion
