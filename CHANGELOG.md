@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.0.0
+
+* **[BREAKING]** Update packages and minimum engine version to Node v12
+
 ## 2.0.0
 
 * **[BREAKING]**:Coerce to known type ([#12](https://github.com/jeffijoe/yenv/issues/12)) (can be disabled)

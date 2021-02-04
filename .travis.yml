@@ -1,6 +1,7 @@
 language: node_js
 node_js:
   - "stable"
+  - "12"
 
 # Lint errors should trigger a failure.
 before_script: npm run lint

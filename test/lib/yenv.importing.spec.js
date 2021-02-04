@@ -4,11 +4,11 @@ const catchError = require('../_helpers/catchError')
 
 const fixture = require('../_helpers/fixture')('importing')
 
-describe('importing', function() {
-  it('imports and merges the files', function() {
+describe('importing', function () {
+  it('imports and merges the files', function () {
     const actual = yenv(fixture('importing.yaml'), {
       env: 'development',
-      envObject: {}
+      envObject: {},
     })
 
     actual.I_WIN.should.equal('importing')
@@ -18,17 +18,17 @@ describe('importing', function() {
     actual.IMPORTED_FROM_1.should.equal('imported-from-1')
   })
 
-  it('prevents circular imports', function() {
+  it('prevents circular imports', function () {
     const err = catchError(() => yenv(fixture('circular-importer.yaml')))
     err.message.should.contain('Circular import')
     err.message.should.contain('circular-importer.yaml')
     err.message.should.contain('circular-imported.yaml')
   })
 
-  it('allows composition across files', function() {
+  it('allows composition across files', function () {
     const actual = yenv(fixture('composition-importer.yaml'), {
       env: 'development',
-      envObject: {}
+      envObject: {},
     })
     actual.PORT.should.equal(1337)
     actual.DB_PORT.should.equal(7331)
@@ -41,9 +41,9 @@ describe('importing', function() {
   it('allows for nonexisting files when using ~import', () => {
     const actual = yenv(fixture('optional-import.yaml'), {
       env: 'development',
-      envObject: {}
+      envObject: {},
     })
-    console.log(actual)
+
     expect(actual.TEST).to.equal(true)
   })
 
@@ -51,7 +51,7 @@ describe('importing', function() {
     const err = catchError(() =>
       yenv(fixture('required-import.yaml'), {
         env: 'development',
-        envObject: {}
+        envObject: {},
       })
     )
     expect(err.message).to.contain('nonexisting')
