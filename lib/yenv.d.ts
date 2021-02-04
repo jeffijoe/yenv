@@ -59,8 +59,6 @@ declare namespace yenv {
  */
 declare function yenv<T = any>(filePath?: string, opts?: yenv.IYenvOpts<T>): T
 
-declare namespace yenv {
-
-}
+declare namespace yenv {}
 
 export = yenv

@@ -8,6 +8,6 @@ const path = require('path')
  * @return {Function}
  */
 module.exports = function makeFixture(folder) {
-  const fixture = file => path.join(__dirname, '../fixtures', folder, file)
+  const fixture = (file) => path.join(__dirname, '../fixtures', folder, file)
   return fixture
 }
