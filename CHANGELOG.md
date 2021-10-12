@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.0.1
+
+* Update packages.
+
 ## 3.0.0
 
 * **[BREAKING]** Update packages and minimum engine version to Node v12
